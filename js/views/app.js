@@ -1,6 +1,5 @@
 var app = app || {}
 
-
 app.AppView = Backbone.View.extend({
 //  Binds to the element #todoapp which is already in the html
   el: '#todoapp',
@@ -31,11 +30,12 @@ app.AppView = Backbone.View.extend({
     this.listenTo(app.Todos, 'filter', this.filterAll);
     this.listenTo(app.Todos, 'all', this.render);
 
-//    Gets all the todos from server or local storage
+//    Gets all the todos from server or local storage. Not sure how todos are getting rendered. Maybe .add() is called by .fetch()
     app.Todos.fetch();
   },
 
   render: function(){
+    console.log("render function: AppView")
     var completed = app.Todos.completed().length;
     var remaining = app.Todos.remaining().length;
 
@@ -94,9 +94,8 @@ app.AppView = Backbone.View.extend({
     };
   },
 
-//  Create a new to-do. C
+//  Create a new to-do when enter key pressed
   createOnEnter: function (event) {
-//  if not enter key pressed of input is empty
     if (event.which !== ENTER_KEY || !this.$input.val().trim()) {
       return;
     } else {

@@ -1,6 +1,6 @@
 var app = app || {}
 
-var TodoList = Backbone.Collection.extedn({
+var TodoList = Backbone.Collection.extend({
 
 //CONFIGURATIONS
 //  Type of model we use in the collection
@@ -38,5 +38,3 @@ var TodoList = Backbone.Collection.extedn({
 });
 
 app.Todos = new TodoList();
-
-
